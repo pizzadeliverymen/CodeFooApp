@@ -17,8 +17,7 @@ import com.example.codefooapp.databinding.FragmentMainBinding
 class PlaceholderFragment : Fragment() {
 
     private lateinit var pageViewModel: PageViewModel
-    private var _binding: FragmentMainBinding? = null
-
+private var _binding: FragmentMainBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -31,12 +30,12 @@ class PlaceholderFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
-        val root = binding.root
+      _binding = FragmentMainBinding.inflate(inflater, container, false)
+      val root = binding.root
 
         val textView: TextView = binding.sectionLabel
         pageViewModel.text.observe(viewLifecycleOwner, Observer {
@@ -66,7 +65,7 @@ class PlaceholderFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
+override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
