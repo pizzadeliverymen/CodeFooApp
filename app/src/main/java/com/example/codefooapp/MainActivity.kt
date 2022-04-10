@@ -1,15 +1,17 @@
 package com.example.codefooapp
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.ViewPager
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import com.example.codefooapp.ui.main.SectionsPagerAdapter
+import androidx.viewpager.widget.ViewPager
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.codefooapp.databinding.ActivityMainBinding
+import com.example.codefooapp.ui.main.SectionsPagerAdapter
+import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,11 +28,31 @@ private lateinit var binding: ActivityMainBinding
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
-        val fab: FloatingActionButton = binding.fab
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+
+        val textView = findViewById<TextView>(binding.parentText.id)
+        val articles = tabs.getTabAt(0)
+        if (articles != null) {
+            articles.text = "\uD83D\uDCDDArticles"
+            articles.icon = Drawable.createFromPath("@drawable/ic_ign_entertainment_inc_vector_logo")
+
         }
+        val videos = tabs.getTabAt(1)
+        if (videos != null) {
+            videos.text = "▶Videos"
+        }
+
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://ign-apis.herokuapp.com/articles"
+        val stringRequest = StringRequest(Request.Method.GET, url,
+            { response ->
+                // Display the first 500 characters of the response string.
+                textView.text = "Response is: $response"
+            },
+            { textView.text = "That didn't work!" })
+
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest)
+
     }
 }

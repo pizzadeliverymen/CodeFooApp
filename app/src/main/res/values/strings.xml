@@ -2,4 +2,15 @@
     <string name="app_name">CodeFooApp</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="ign_logo">IGN Logo</string>
+    <string name="temp">temp</string>
+    <string name="playButton">▶</string>
+    <string name="comments">💬</string>
+    <string name="articles">📝</string>
+    <string name="gameTitle"><u>Unknown Game</u></string>
+    <string name="authorName">By: <u>NULL</u></string>
+    <string name="temp_title">Temp_Title</string>
+    <string name="article_description">article description</string>
+    <string name="article_image">article image</string>
+    <string name="author_image">author image</string>
 </resources>
